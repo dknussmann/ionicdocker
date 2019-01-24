@@ -20,11 +20,13 @@ WORKDIR /var/opt
 
 RUN curl -o sdk-tools.zip https://dl.google.com/android/repository/sdk-tools-linux-3859397.zip
 RUN unzip sdk-tools.zip -d android
+RUN mkdir -p  /root/.android/
+RUN touch /root/.android/repositories.cfg
 
-RUN yes | sdkmanager --update
 RUN yes | sdkmanager "build-tools;26.0.2"
 RUN yes | sdkmanager "platforms;android-26"
 RUN yes | sdkmanager "extras;google;google_play_services"
+RUN yes | sdkmanager --update
 RUN sdkmanager "tools"
 RUN yes | sdkmanager --licenses
 
