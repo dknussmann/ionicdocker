@@ -12,8 +12,9 @@ RUN apt-get install -y nodejs
 RUN npm install -g npm cordova ionic
 
 RUN apt-get update
-RUN yes | apt-get install openjdk-8-jre
+RUN yes | apt-get install openjdk-8-jdk
 RUN update-alternatives --config java
+RUN update-alternatives --config javac
 RUN java -version
 RUN javac -version
 
